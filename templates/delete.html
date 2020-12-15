@@ -1,0 +1,11 @@
+{% extends 'shared/base.html' %}
+{% block site_content %}
+        <h1>Are you sure you want to delete the animal?</h1>
+    <form method="post" action="{% url 'delete animal' animal.pk %}">
+    {% csrf_token %}
+        <div class="buttons-container small">
+            <button class="button delete">Yes</button>
+            <a class="button details" href="{% url 'home' %}">Go Back</a>
+        </div>
+    </form>
+{% endblock %}

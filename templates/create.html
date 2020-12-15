@@ -1,0 +1,11 @@
+{% extends 'shared/base.html' %}
+{% block site_content %}
+    <h1>Add Animal</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <div class="input-group">
+            <input class="button primary" type="submit" value="Add">
+        </div>
+    </form>
+{% endblock %}

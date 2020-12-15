@@ -1,0 +1,49 @@
+{% extends 'shared/base.html' %}
+{% block site_content %}
+    <h1> Sick animals in clinic </h1>
+    {% if sick_animals %}
+        <div class="animals-container">
+            {% for animal in sick_animals %}
+                <div class="animal-card">
+                    <img src="{{ animal.image_url }}">
+                    <h3>{{ animal.name }}</h3>
+
+                    <p class="priority high">{{ animal.priority }}</p>
+
+                    <div class="buttons-container">
+
+                        <a class="button details" href="{% url 'animal details' animal.pk %}">Details</a>
+                        <a class="button edit" href="{% url 'edit animal' animal.pk %}">Edit</a>
+                        <a class="button cure" href="{% url 'cure animal' animal.pk %}">Cure</a>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h2>No sick animals in the clinic</h2>
+    {% endif %}
+
+    <h1> Cured animals </h1>
+
+    {% if cured_animals %}
+        <div class="animals-container">
+            {% for animal in cured_animals %}
+                <div class="animal-card">
+                    <img src="{{ animal.image_url }}">
+                    <h3>{{ animal.name }}</h3>
+
+                    <p class="priority cured">CURED</p>
+
+                    <div class="buttons-container">
+
+                        <a class="button delete" href="{% url 'delete animal' animal.pk %}">Delete</a>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h2>No cured animals in the clinic</h2>
+    {% endif %}
+{% endblock %}

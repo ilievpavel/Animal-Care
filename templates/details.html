@@ -1,0 +1,14 @@
+{% extends 'shared/base.html' %}
+{% block site_content %}
+    <h1>Animal Details</h1>
+    <div class="animal-card big">
+        <img src="{{ animal.image_url }}">
+        <h3>{{ animal.name }}</h3>
+        <p class="priority high">{{ animal.priority }}</p>
+        <p>{{ animal.description }}</p>
+        <div class="buttons-container">
+            <a class="button edit" href="{% url 'edit animal' animal.pk %}">Edit</a>
+            <a class="button cure" href="{% url 'cure animal' animal.pk %}">Cure</a>
+        </div>
+    </div>
+{% endblock %}
